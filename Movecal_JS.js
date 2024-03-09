@@ -193,14 +193,20 @@ function fetchAndPopulateMovesDropdown(inputId, dropdownId, jsonURL) {
             // Add keydown event listener for Tab key
             input.addEventListener('keydown', (event) => {
                 if (event.key === 'Tab') {
-                    const firstOption = dropdown.querySelector('option');
-                    if (firstOption) {
-                        event.preventDefault(); // Prevent default tab behavior
-                        input.value = firstOption.textContent; // Fill input with first option
-                        dropdown.style.display = 'none'; // Hide dropdown
+                    if (dropdown.style.display === 'block') {
+                        const firstOption = dropdown.querySelector('option');
+                        if (firstOption) {
+                            event.preventDefault(); // Prevent default tab behavior
+                            input.value = firstOption.textContent; // Fill input with first option
+                            dropdown.style.display = 'none'; // Hide dropdown
+                        }
+                    } else {
+                        // Dropdown is not visible, allow default Tab behavior
+                        return;
                     }
                 }
             });
+            
         })
         .catch(error => {
             console.error('Error:', error);
