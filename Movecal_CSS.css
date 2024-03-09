@@ -8,8 +8,6 @@ body {
     margin-right: 10px;
     /* Add margin to create space between containers */
     border-bottom: none;
-
-
 }
 
 /* Remove the width property from input[type="text"] to allow flexibility */
@@ -19,6 +17,12 @@ body {
     width: 200px;
     height: 25px;
     /* Add width property for input boxes */
+}
+
+#goToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
 }
 
 .dropdown {

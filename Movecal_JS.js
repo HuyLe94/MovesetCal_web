@@ -261,3 +261,8 @@ function updateSortIndicator(th, sortDirection) {
         indicator.innerHTML = '&#9650;&#9660;';
     });
 }
+
+document.getElementById('goToTopBtn').addEventListener('click', function() {
+    // Scroll to the top of the document when the button is clicked
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
