@@ -158,6 +158,8 @@ function fetchAndPopulateMovesDropdown(inputId, dropdownId, jsonURL) {
     const input = document.getElementById(inputId);
     const dropdown = document.getElementById(dropdownId);
 
+    let data;
+
     fetch(jsonURL)
         .then(response => {
             if (!response.ok) {
@@ -165,7 +167,9 @@ function fetchAndPopulateMovesDropdown(inputId, dropdownId, jsonURL) {
             }
             return response.json();
         })
-        .then(data => {
+        .then(jsonData => {
+            data = jsonData;
+
             input.addEventListener('input', () => {
                 const searchText = input.value.toLowerCase();
                 const matchingOptions = data.filter(option =>
@@ -179,6 +183,11 @@ function fetchAndPopulateMovesDropdown(inputId, dropdownId, jsonURL) {
                 } else {
                     dropdown.style.display = 'block'; // Show dropdown if there are matching options
                 }
+            });
+
+            // Add focusout event listener to hide dropdown when input loses focus
+            input.addEventListener('focusout', () => {
+                dropdown.style.display = 'none';
             });
 
             // Add keydown event listener for Tab key
@@ -197,6 +206,7 @@ function fetchAndPopulateMovesDropdown(inputId, dropdownId, jsonURL) {
             console.error('Error:', error);
         });
 }
+
 
 fetchAndPopulateMovesDropdown('search-input5', 'abilityList', abilitiesJsonURL);
 fetchAndPopulateMovesDropdown('search-input1', 'movedropdown1', movesJsonURL);
@@ -262,7 +272,7 @@ function updateSortIndicator(th, sortDirection) {
     });
 }
 
-document.getElementById('goToTopBtn').addEventListener('click', function() {
+document.getElementById('goToTopBtn').addEventListener('click', function () {
     // Scroll to the top of the document when the button is clicked
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
