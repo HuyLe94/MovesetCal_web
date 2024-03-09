@@ -1,0 +1,82 @@
+body {
+    font-size: 25px;
+}
+
+.move-container {
+    display: inline-block;
+    /* Change display property to inline-block */
+    margin-right: 10px;
+    /* Add margin to create space between containers */
+    border-bottom: none;
+
+
+}
+
+/* Remove the width property from input[type="text"] to allow flexibility */
+.move-container input[type="text"] {
+    /* flex: 1; */
+    /* Remove flex property */
+    width: 200px;
+    height: 25px;
+    /* Add width property for input boxes */
+}
+
+.dropdown {
+    position: absolute;
+    background-color: #f9f9f9;
+    /*border: 1px solid #ccc;*/
+    max-height: 100px;
+    overflow-y: auto;
+    width: 200px;
+    /* Add width property for dropdowns */
+}
+
+body {
+    text-align: center;
+    /* Aligns text to center */
+}
+
+td {
+    padding-right: 5px;
+    /* Adjust this value as needed */
+    text-align: center;
+}
+
+td.paddingRight {
+    text-align: right;
+}
+
+#ability_table,
+#moves_table,
+#Stats_table,
+#types_table {
+    margin: 0 auto;
+    /* This centers the table horizontally */
+    white-space: nowrap;
+}
+
+
+th {
+    border: 1px solid black;
+}
+
+#Stats_table tr td:nth-child(2) {
+    padding-right: 100px;
+    /* Adjust the padding value as needed */
+}
+
+#result_table th,
+#result_table td {
+    width: 11.11%;
+    /* Equal width distribution for each cell (100% / n columns) */
+    border: 1px solid black;
+    /* Add borders to visualize cell boundaries */
+
+    /* Add padding for spacing */
+}
+
+.tables-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
