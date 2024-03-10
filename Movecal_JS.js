@@ -12,7 +12,7 @@ fetch(fullDataJsonURL)
     .then(response => response.json())
     .then(data => {
         pokemonData = data;
-        console.log('Pokémon data fetched successfully:', pokemonData);
+        //console.log('Pokémon data fetched successfully:', pokemonData);
     })
     .catch(error => {
         console.error('Error fetching Pokémon data:', error);
@@ -154,6 +154,7 @@ function populateDropdown(dropdown, options) {
     });
 }
 
+
 function fetchAndPopulateMovesDropdown(inputId, dropdownId, jsonURL) {
     const input = document.getElementById(inputId);
     const dropdown = document.getElementById(dropdownId);
@@ -174,8 +175,7 @@ function fetchAndPopulateMovesDropdown(inputId, dropdownId, jsonURL) {
                 const searchText = input.value.toLowerCase();
                 const matchingOptions = data.filter(option =>
                     option.toLowerCase().startsWith(searchText)
-                );
-
+                ); 
                 populateDropdown(dropdown, matchingOptions);
 
                 if (searchText.length === 0 || matchingOptions.length === 0) {
@@ -186,9 +186,14 @@ function fetchAndPopulateMovesDropdown(inputId, dropdownId, jsonURL) {
             });
 
             // Add focusout event listener to hide dropdown when input loses focus
-            input.addEventListener('focusout', () => {
-                dropdown.style.display = 'none';
-            });
+            //input.addEventListener('focusout', (event) => {
+            //    const relatedTarget = event.relatedTarget;
+            //    if (!dropdown.contains(relatedTarget) && relatedTarget !== input) {
+            //        dropdown.style.display = 'none';
+            //    }
+            //});
+            
+            
 
             // Add keydown event listener for Tab key
             input.addEventListener('keydown', (event) => {
@@ -205,7 +210,7 @@ function fetchAndPopulateMovesDropdown(inputId, dropdownId, jsonURL) {
                         return;
                     }
                 }
-            });
+            }); 
             
         })
         .catch(error => {
@@ -282,3 +287,35 @@ document.getElementById('goToTopBtn').addEventListener('click', function () {
     // Scroll to the top of the document when the button is clicked
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+// Add click event listener to the document
+document.addEventListener('click', (event) => {
+    const clickedElement = event.target;
+
+    // Check if the clicked element is an input box
+    if (clickedElement.tagName.toLowerCase() === 'input') {
+        const clickedInput = clickedElement;
+        // Get all input boxes
+        const allInputs = document.querySelectorAll('input');
+        // Close dropdowns associated with other input boxes
+        allInputs.forEach(input => {
+            if (input !== clickedInput) {
+                const associatedDropdown = input.nextElementSibling;
+                if (associatedDropdown && associatedDropdown.classList.contains('dropdown')) {
+                    associatedDropdown.style.display = 'none';
+                }
+            }
+        });
+    } else {
+        // Check if the clicked element is not contained within any specific elements
+        if (!clickedElement.closest('.your-dropdown-class') && !clickedElement.closest('.your-input-class')) {
+            // Close all dropdowns
+            const allDropdowns = document.querySelectorAll('.dropdown');
+            allDropdowns.forEach(dropdown => {
+                dropdown.style.display = 'none';
+            });
+        }
+    }
+});
+
+
