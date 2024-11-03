@@ -1,8 +1,8 @@
 // Define the URL for the JSON file containing abilities data
-const abilitiesJsonURL = 'https://raw.githubusercontent.com/HuyLe94/Pokemon-Data-File/main/V1/unique_abilities.json';
-const movesJsonURL = 'https://raw.githubusercontent.com/HuyLe94/Pokemon-Data-File/main/V1/unique_moves.json';
-const typesJsonURL = 'https://raw.githubusercontent.com/HuyLe94/Pokemon-Data-File/main/V1/unique_types.json';
-const fullDataJsonURL = 'https://raw.githubusercontent.com/HuyLe94/Pokemon-Data-File/main/V1/Complete_Data.json';
+const abilitiesJsonURL = 'https://raw.githubusercontent.com/HuyLe94/Pokemon_Data_Files/refs/heads/main/unique_abilities.json';
+const movesJsonURL = 'https://raw.githubusercontent.com/HuyLe94/Pokemon_Data_Files/refs/heads/main/unique_moves.json';
+const typesJsonURL = 'https://raw.githubusercontent.com/HuyLe94/Pokemon_Data_Files/refs/heads/main/unique_types.json';
+const fullDataJsonURL = 'https://raw.githubusercontent.com/HuyLe94/Pokemon_Data_Files/refs/heads/main/complete_data.json';
 
 const FontSize = '25px';
 
